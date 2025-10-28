@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [mysuite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="mytest(failed)">
+    <classes>
+      <class name="TestNGProject.OrangeHRMTest">
+        <methods>
+          <include name="LogoTest"/>
+          <include name="LoginTest"/>
+        </methods>
+      </class> <!-- TestNGProject.OrangeHRMTest -->
+      <class name="TestNGProject.TestNGClass_1">
+        <methods>
+          <include name="UserManagementDetails"/>
+          <include name="Reset"/>
+          <include name="login"/>
+          <include name="setup"/>
+          <include name="ClickOnAdmin"/>
+          <include name="closeURL"/>
+        </methods>
+      </class> <!-- TestNGProject.TestNGClass_1 -->
+    </classes>
+  </test> <!-- mytest(failed) -->
+</suite> <!-- Failed suite [mysuite] -->

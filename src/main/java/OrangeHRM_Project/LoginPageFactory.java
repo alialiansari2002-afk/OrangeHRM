@@ -15,42 +15,41 @@ public class LoginPageFactory {
 	}
 	
 	//Create locators
-	@FindBy(xpath="//input[@name='username']") WebElement username;
-	@FindBy(xpath="//input[@name='password']") WebElement password;
-	@FindBy(xpath="//button[@type='submit']") WebElement loginButton;
+	@FindBy(xpath="//input[@name='username']") WebElement usernameField;
+	@FindBy(xpath="//input[@name='password']") WebElement passwordField;
+	@FindBy(xpath="//button[@type='submit']") WebElement loginBtn;
 	
-	@FindBy(xpath="//span[text()='Admin']") WebElement Admin;
 	
 	//Logout
-	@FindBy(xpath="//span[@class='oxd-userdropdown-tab']") WebElement logout;
-	@FindBy(xpath="//a[text()='Logout']") WebElement clicklogout;
+	@FindBy(xpath="//span[@class='oxd-userdropdown-tab']") WebElement userDropdown;
+	@FindBy(xpath="//a[text()='Logout']") WebElement logoutlink;
 	
-	//Forgot your password? 
-	@FindBy(xpath="//p[@class='oxd-text oxd-text--p orangehrm-login-forgot-header']") WebElement forgotpassword;
-	@FindBy(xpath="//input[@name='username']") WebElement EntUsername;
-	@FindBy(xpath="//button[text()=' Reset Password ']") WebElement ResetPassword;
+	// Actions
+    public void enterUsername(String username) {
+        usernameField.sendKeys(username);
+    }
+
+    public void enterPassword(String password) {
+        passwordField.sendKeys(password);
+    }
+
+    public void clickLogin() {
+        loginBtn.click();
+    }
 	
-	
-	//Create Actions
-	public void login(String uname, String pwd) {
-		username.sendKeys(uname);
-		password.sendKeys(pwd);
-		loginButton.click();
+	//login actions
+	public void loginToapp(String uname, String pwd) {
+		enterUsername(uname);
+		enterPassword(pwd);
+		clickLogin();
 	}
-		public void admin() {
-		Admin.click();
-	}
+	
+	//logout actions
 	public void Logout() {
-		logout.click();
-		clicklogout.click();
+		userDropdown.click();
+		logoutlink.click();
 		
 	}
-	public void forgotPassword(String entusername) {
-		forgotpassword.click();
-		EntUsername.sendKeys(entusername);
-		ResetPassword.click();
-	}
-	
-	
+		
 
 }

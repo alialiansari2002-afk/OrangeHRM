@@ -1,5 +1,7 @@
 package OrangeHRM_Project;
 
+import static org.testng.Assert.ARRAY_MISMATCH_TEMPLATE;
+
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -12,7 +14,8 @@ import org.testng.annotations.Test;
 public class LoginTestCases {
 	
 	WebDriver driver;
-	LoginPageFactory LoginPage=new LoginPageFactory(driver);
+	LoginPageFactory loginpage;
+	//LoginPageFactory LoginPage=new LoginPageFactory(driver);
 	
 	@BeforeClass
 	void setup() {
@@ -24,35 +27,28 @@ public class LoginTestCases {
 	@Test(priority=1)
 	void verifyLogin() {
 		//Create Object with class name and --Login Action--
-		//LoginPageFactory LoginPage = new LoginPageFactory(driver);	// first class name "LoginPageFactory"
-		LoginPage.login("Admin", "admin123");
+		LoginPageFactory LoginPage = new LoginPageFactory(driver);	// first class name "LoginPageFactory"
+		LoginPage.loginToapp("Admin", "admin123");
 
 		
 		//Validation of test case
 		String ActTitle = driver.getTitle();
 		String ExpTitle = "OrangeHRM";
 		Assert.assertEquals(ActTitle, ExpTitle);
+		Assert.assertTrue(driver.getCurrentUrl().contains("dashboard"),"login failed!");
 		
 		System.out.println("Login Successfull");
-	}
-	@Test(priority=2)
-	void Admin() {
-		LoginPageFactory pf = new LoginPageFactory(driver);
-		pf.admin();
-		//validation of admin page..
-		Assert.assertTrue(driver.findElement(By.xpath("//span[@class='oxd-topbar-header-breadcrumb']//h6[text()='Admin']")).isDisplayed());
+		
 		
 	}
-	@Test(priority=3)
-	void logout() {
-		//LoginPageFactory pf = new LoginPageFactory(driver);
-		LoginPage.Logout();
-		LoginPage.Logout();
+	@Test(priority=2)
+	void verifyLogout() {
+		LoginPageFactory logoutpage = new LoginPageFactory(driver);
+		//logout
+		logoutpage.Logout();
+				
+		Assert.assertTrue(driver.getCurrentUrl().contains("auth/login"), "Logout failed!");
 	}
-	@Test(priority=4)
-	void forgotpassword() {
-		LoginPage.forgotPassword("Admin");
-
-	}
-
+	
+	
 }

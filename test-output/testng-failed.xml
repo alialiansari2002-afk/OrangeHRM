@@ -5,11 +5,9 @@
     <classes>
       <class name="OrangeHRM_Project.LoginTestCases">
         <methods>
-          <include name="logout"/>
-          <include name="Admin"/>
           <include name="verifyLogin"/>
           <include name="setup"/>
-          <include name="forgotpassword"/>
+          <include name="verifyLogout"/>
         </methods>
       </class> <!-- OrangeHRM_Project.LoginTestCases -->
     </classes>
